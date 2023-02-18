@@ -10,21 +10,23 @@ The purpose of this project is to set up and configure an on-premises Active Dir
 <img src="https://i.imgur.com/pU5A58S.png" alt="Microsoft Active Directory Logo"/>
 </p>
 
-<h1>On-premises Active Directory Deployed in the Cloud (Azure)</h1>
+<h1>On-Premise Active Directory Deployed in the Cloud (Azure)</h1>
 This tutorial outlines the implementation of on-premises Active Directory within Azure Virtual Machines.<br />
 
 
 <h2>Environments and Technologies Used</h2>
 
 - Microsoft Azure (Virtual Machines/Compute)
+- PowerShell
 - Remote Desktop
 - Active Directory Domain Services
-- PowerShell
+
 
 <h2>Operating Systems Used </h2>
 
-- Windows Server 2022
 - Windows 10 (21H2)
+- Windows Server 2022
+
 
 
 <h2>Deployment and Configuration Steps</h2>
@@ -37,9 +39,9 @@ Step 1: Set up Resources in Azure
   
 - Create the Domain Controller VM (Windows Server 2022) named “DC-1”
    - Take note of the Resource Group and Virtual Network (Vnet) that get created at this time
-- Set Domain Controller’s NIC Private IP address to be static
-- Create the Client VM (Windows 10) named “Client-1”. Use the same Resource Group and Vnet that was created in Step 1.a
-- Ensure that both VMs are in the same Vnet (you can check the topology with Network Watcher
+- Set Domain Controller’s NIC Private IP address as static
+- Create the Client VM (Windows 10) named “Client-1”. Use the same Resource Group as was before
+- Make sure both VMs are in the same Virtual network 
 
 </p>
 <br />
@@ -70,13 +72,12 @@ Step 2. Ensure Connectivity between the client and Domain Controller
 <p>
 Step 3. Install Active Directory
 
-- Login to DC-1 through Remote Desktop
+- Login to the domain controller DC-1 through Remote Desktop
 - Install Active Directory Domain Services: 
   - In the Server Manager, Select "Add Roles and Features"
   - Continue- Select Next, Next, Next, 
   - Select "Active Directory Domain Services"
-  - "Add Features"; "Next"; "Next"; "Next"; "Install"; "Close"
-
+  
 
 </p>
 <br />
@@ -90,9 +91,9 @@ Step 4. Set Up Active Directory
 
 - Click "notification" to Select: "Promote this server to a Domain Controller"
 - Select: "Add a new forest" (mydomain.com or your choice)
-- Choose a Password and make note of this
-- Complete Installation ("Next"; "Next"; "Next"; "Next" and "Install") 
-- Allow the server to close, which will disconnect the Remote Desktop. 
+- Choose a Password
+- Complete Installation
+- Close the server, and you will disconnect the Remote Desktop. 
 - Restart and then log back into DC-1 as user: mydomain.com\labuser
 </p>
 <br />
